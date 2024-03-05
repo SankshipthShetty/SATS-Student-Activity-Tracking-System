@@ -36,10 +36,10 @@ app.post('/admin-check', (req, res) => {
 
 });
 app.post('/student-check', (req, res) => {
-    const { username, password } = req.body;
+    const { usn, password } = req.body;
 
-    const query = "SELECT COUNT(*) AS count FROM student WHERE fname = ? AND password = ?";
-    db.query(query, [username, password], (err, results) => {
+    const query = "SELECT COUNT(*) AS count FROM student WHERE usn = ? AND password = ?";
+    db.query(query, [usn, password], (err, results) => {
         if (err) {
           console.error('Database error:', err);
           res.status(500).json({ error: 'Internal server error' });
@@ -56,6 +56,32 @@ app.post('/student-check', (req, res) => {
 
 
 });
+
+app.get('/get-user/:usn', (req, res) => {
+    const { usn } = req.params;
+
+    const query = 'SELECT usn, branch FROM student WHERE usn = ?';
+    db.query(query, [usn], (err, results) => {
+        if (err) {
+            console.error('Database error:', err);
+            res.status(500).json({ error: 'Internal server error' });
+        } else {
+            console.log('User data:', results);
+            if (results.length > 0) {
+                const userData = results[0];
+                res.json(userData);
+            } else {
+                res.status(404).json({ error: 'User not found' });
+            }
+        }
+    });
+});
+
+  
+
+
+
+
 
 app.get('/fetch-users', (req, res) => {
     const { department } = req.query;

@@ -4,12 +4,12 @@ import { useNavigate } from 'react-router-dom';
 
 const StudentLogin = () => {
   const [formData, setFormData] = useState({
-    username: '',
+    usn: '',
     password: '',
   });
 
   const [formError, setFormError] = useState({
-    username: '',
+    usn: '',
     password: '',
   });
 
@@ -25,26 +25,28 @@ const StudentLogin = () => {
     e.preventDefault();
 
     // Validate that both fields are not empty
-    if (!formData.username.trim() || !formData.password.trim()) {
+    if (!formData.usn.trim() || !formData.password.trim()) {
       setFormError({
-        username: formData.username.trim() ? '' : 'Username is required',
+        usn: formData.usn.trim() ? '' : 'USN is required',
         password: formData.password.trim() ? '' : 'Password is required',
       });
       return;
     }
 
     try {
-      const { username, password } = formData;
+      const { usn, password } = formData;
 
       const response = await axios.post('http://localhost:8800/student-check', {
-        username,
+        usn,
         password,
       });
 
       // Handle server response
       if (response.data.exists) {
         console.log(response);
-        navigate('/dashboard');
+
+        navigate('/user-dashboard', { state: { usn } });
+
       } else {
         navigate('/student-register');
       }
@@ -58,15 +60,15 @@ const StudentLogin = () => {
       <div>
         <h3>Student Login</h3>
         <form onSubmit={handleSubmit}>
-          <label htmlFor="student-username">Username (USN):</label>
+          <label htmlFor="student-username">USN</label>
           <input
             type="text"
             id="student-username"
-            name="username"
-            value={formData.username}
+            name="usn" // Change from "username" to "usn"
+            value={formData.usn}
             onChange={handleChange}
           />
-          {formError.username && <p style={{ color: 'red' }}>{formError.username}</p>}
+          {formError.usn && <p style={{ color: 'red' }}>{formError.usn}</p>}
 
           <label htmlFor="student-password">Password:</label>
           <input
