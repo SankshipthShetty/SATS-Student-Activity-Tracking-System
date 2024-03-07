@@ -6,6 +6,8 @@ import AdminHome from "./pages/dashboard/AdminHome.jsx";
 import UserHome from "./pages/dashboard/UserHome.jsx";
 import Cocurr from "./pages/events/Cocurr.jsx";
 import Activity from "./pages/events/Activity.jsx";
+import Viewactivity from "./pages/admin/Viewactivity.jsx";
+import Viewcocurr from "./pages/admin/Viewcocurr.jsx";
 
 function App() {
   return (
@@ -19,6 +21,8 @@ function App() {
           <Route path="/user-dashboard" element={<UserHome/>} />
           <Route path="/cocurrecular" element={<Cocurr/>} />
           <Route path="/activity" element={<Activity/>} />
+          <Route path="/view-activity/:usn" element={<Viewactivity/>} />
+          <Route path="/view-cocurr/:usn" element={<Viewcocurr/>} />
           {/* <Route path="" element={<h1>Not Found</h1>} /> */}
         </Routes>
       </BrowserRouter>

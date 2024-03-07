@@ -1,87 +1,90 @@
 import React, { useState } from 'react';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
-const Cocurr = () => {
+const StudentLogin = () => {
   const [formData, setFormData] = useState({
-    price: '',
-    venue: '',
-    date: '',
-    position: '',
-    category: '',
+    usn: '',
+    password: '',
+  });
+
+  const [formError, setFormError] = useState({
+    usn: '',
+    password: '',
   });
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
+    setFormError({ ...formError, [name]: '' });
   };
 
-  const handleSubmit = (e) => {
+  const navigate = useNavigate();
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Handle form submission, you can send the formData to your server or perform other actions.
+
+    // Validate that both fields are not empty
+    if (!formData.usn.trim() || !formData.password.trim()) {
+      setFormError({
+        usn: formData.usn.trim() ? '' : 'USN is required',
+        password: formData.password.trim() ? '' : 'Password is required',
+      });
+      return;
+    }
+
+    try {
+      const { usn, password } = formData;
+
+      const response = await axios.post('http://localhost:8800/student-check', {
+        usn,
+        password,
+      });
+
+      // Handle server response
+      if (response.data.exists) {
+        console.log(response);
+
+        navigate('/user-dashboard', { state: { usn } });
+
+      } else {
+        navigate('/student-register');
+      }
+    } catch (err) {
+      console.error('Login failed', err);
+    }
   };
 
   return (
     <div>
-      <h2>Cocurr Form</h2>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label htmlFor="price">Price:</label>
+      <div>
+        <h3>Student Login</h3>
+        <form onSubmit={handleSubmit}>
+          <label htmlFor="student-username">USN</label>
           <input
             type="text"
-            id="price"
-            name="price"
-            value={formData.price}
+            id="student-username"
+            name="usn" // Change from "username" to "usn"
+            value={formData.usn}
             onChange={handleChange}
           />
-        </div>
+          {formError.usn && <p style={{ color: 'red' }}>{formError.usn}</p>}
 
-        <div>
-          <label htmlFor="venue">Venue:</label>
+          <label htmlFor="student-password">Password:</label>
           <input
-            type="text"
-            id="venue"
-            name="venue"
-            value={formData.venue}
+            type="password"
+            id="student-password"
+            name="password"
+            value={formData.password}
             onChange={handleChange}
           />
-        </div>
+          {formError.password && <p style={{ color: 'red' }}>{formError.password}</p>}
 
-        <div>
-          <label htmlFor="date">Date:</label>
-          <input
-            type="text"
-            id="date"
-            name="date"
-            value={formData.date}
-            onChange={handleChange}
-          />
-        </div>
-
-        <div>
-          <label htmlFor="position">Position:</label>
-          <input
-            type="text"
-            id="position"
-            name="position"
-            value={formData.position}
-            onChange={handleChange}
-          />
-        </div>
-
-        <div>
-          <label htmlFor="category">Category:</label>
-          <input
-            type="text"
-            id="category"
-            name="category"
-            value={formData.category}
-            onChange={handleChange}
-          />
-        </div>
-
-        <button type="submit">Submit</button>
-      </form>
+          <button type="submit">Login as Student</button>
+        </form>
+      </div>
     </div>
   );
 };
 
-export default Cocurr;
+export default StudentLogin;

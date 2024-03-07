@@ -1,25 +1,27 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import AdminLogin from './admin/AdminLogin';
-import StudentLogin from './student/StudentLogin';
+import React from "react";
+import { Link } from "react-router-dom";
+import AdminLogin from "./admin/AdminLogin";
+import StudentLogin from "./student/StudentLogin";
+import { Button } from "../components/ui/button";
 
 function Home() {
   return (
-    <div>
-      
+    <div className="bg-gray-100 p-4">
+      <AdminLogin />
 
-      
-        <AdminLogin/>
+      <StudentLogin />
 
-        <StudentLogin/>
-      
-       
-      <div>
+      <div className="mt-4">
         <Link to="/admin-register">
-          <button>Admin Register</button>
+          <button className="bg-blue-500 text-white px-4 py-2 rounded-md">
+            Admin Register
+          </button>
         </Link>
-        <Link to="/student-register">
-          <button>Student Register</button>
+        <Link to="/student-register" className="ml-2">
+          <button className="bg-green-500 text-white px-4 py-2 rounded-md">
+            Student Register
+          </button>
+          <Button>Button</Button>
         </Link>
       </div>
     </div>
