@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
-import { Link } from 'react-router-dom';
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+import { Link } from "react-router-dom";
+import { Button } from "../../components/ui/button";
 
 const AdminHome = () => {
   const [users, setUsers] = useState([]);
@@ -8,41 +9,43 @@ const AdminHome = () => {
   useEffect(() => {
     // Retrieve department from cookie
     const department = document.cookie
-      .split('; ')
-      .find(row => row.startsWith('department='))
-      .split('=')[1];
+      .split("; ")
+      .find((row) => row.startsWith("department="))
+      .split("=")[1];
 
     // Fetch users based on department
     axios
       .get(`http://localhost:8800/fetch-users?department=${department}`)
-      .then(response => {
+      .then((response) => {
         setUsers(response.data.users);
       })
-      .catch(error => {
-        console.error('Error fetching users:', error);
+      .catch((error) => {
+        console.error("Error fetching users:", error);
       });
   }, []); // The empty dependency array ensures this effect runs once on mount
 
   return (
-    <div>
-      <h3>Dashboard</h3>
-      <p>Department: {document.cookie.split('; ').find(row => row.startsWith('department=')).split('=')[1]}</p>
-
-      {/* Display users */}
-      <ul>
-        {users.map(user => (
-          <div key={user.usn}>
-            <button>{user.usn} {user.fname}</button>
+    <div className="mb-6">
+    <p className="mb-4">Department: {document.cookie.split('; ').find(row => row.startsWith('department=')).split('=')[1]}</p>
+  
+    {/* Display users */}
+    <ul className="list-none p-0">
+      {users.map((user, index) => (
+        <div key={user.usn} className={`flex items-center justify-between mb-2${index < users.length - 1 ? ' pb-2 border-b' : ''}`}>
+          <div className="mr-4">{user.usn} {user.fname}</div>
+          <div className="flex space-x-4">
             <Link to={`/view-activity/${user.usn}`}>
-              <button>activity</button>
+              <Button>activity</Button>
             </Link>
             <Link to={`/view-cocurr/${user.usn}`}>
-              <button>co-curr</button>
+              <Button>co-curr</Button>
             </Link>
           </div>
-        ))}
-      </ul>
-    </div>
+        </div>
+      ))}
+    </ul>
+  </div>
+  
   );
 };
 
