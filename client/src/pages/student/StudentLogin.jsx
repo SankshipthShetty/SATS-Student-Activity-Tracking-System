@@ -1,22 +1,25 @@
-import React, { useState } from 'react';
-import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+import React, { useState } from "react";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import { Button } from "../../components/ui/button";
+import { Input } from "../../components/ui/input";
+import { Link } from "react-router-dom";
 
 const StudentLogin = () => {
   const [formData, setFormData] = useState({
-    usn: '',
-    password: '',
+    usn: "",
+    password: "",
   });
 
   const [formError, setFormError] = useState({
-    usn: '',
-    password: '',
+    usn: "",
+    password: "",
   });
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
-    setFormError({ ...formError, [name]: '' });
+    setFormError({ ...formError, [name]: "" });
   };
 
   const navigate = useNavigate();
@@ -27,8 +30,8 @@ const StudentLogin = () => {
     // Validate that both fields are not empty
     if (!formData.usn.trim() || !formData.password.trim()) {
       setFormError({
-        usn: formData.usn.trim() ? '' : 'USN is required',
-        password: formData.password.trim() ? '' : 'Password is required',
+        usn: formData.usn.trim() ? "" : "USN is required",
+        password: formData.password.trim() ? "" : "Password is required",
       });
       return;
     }
@@ -36,7 +39,7 @@ const StudentLogin = () => {
     try {
       const { usn, password } = formData;
 
-      const response = await axios.post('http://localhost:8800/student-check', {
+      const response = await axios.post("http://localhost:8800/student-check", {
         usn,
         password,
       });
@@ -45,17 +48,17 @@ const StudentLogin = () => {
       if (response.data.exists) {
         console.log(response);
 
-        navigate('/user-dashboard', { state: { usn } });
-
+        navigate("/user-dashboard", { state: { usn } });
       } else {
-        navigate('/student-register');
+        navigate("/student-register");
       }
     } catch (err) {
-      console.error('Login failed', err);
+      console.error("Login failed", err);
     }
   };
 
   return (
+
     <form onSubmit={handleSubmit} className="bg-black p-4 rounded-md ">
   <label htmlFor="student-username" className='text-white font-bold'>University Seat Number (USN)</label>
   <input

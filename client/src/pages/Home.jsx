@@ -1,8 +1,8 @@
 import React from "react";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import AdminLogin from "./admin/AdminLogin";
 import StudentLogin from "./student/StudentLogin";
-import { Button } from "../components/ui/button";
+// import { Button } from "../components/ui/button";
 
 import {
   Card,
@@ -13,6 +13,7 @@ import {
 
 function Home() {
   return (
+
     <div style={{ overflow: 'hidden' }} className="min-h-screen bg-black flex flex-col top-20 justify-center items-center py-16" >
       <p className="gradient-text text-transparent text-5xl font-bold text-center animate-gradient mt-0 mb-32 ">STUDENT ACTIVITY MANAGEMENT SYSTEM</p>
       

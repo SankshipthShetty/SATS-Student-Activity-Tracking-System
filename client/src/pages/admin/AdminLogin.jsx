@@ -1,23 +1,26 @@
-import React, { useState } from 'react';
-import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+import React, { useState } from "react";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import { Input } from "../../components/ui/input";
+import { Button } from "../../components/ui/button";
+import { Link } from "react-router-dom";
 
 function AdminLogin() {
   const [formData, setFormData] = useState({
-    username: '',
-    password: '',
-    department: '', // Add department to state
+    username: "",
+    password: "",
+    department: "", // Add department to state
   });
 
   const [formError, setFormError] = useState({
-    username: '',
-    password: '',
+    username: "",
+    password: "",
   });
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
-    setFormError({ ...formError, [name]: '' });
+    setFormError({ ...formError, [name]: "" });
   };
 
   const navigate = useNavigate();
@@ -28,8 +31,8 @@ function AdminLogin() {
     // Validate that both fields are not empty
     if (!formData.username.trim() || !formData.password.trim()) {
       setFormError({
-        username: formData.username.trim() ? '' : 'Username is required',
-        password: formData.password.trim() ? '' : 'Password is required',
+        username: formData.username.trim() ? "" : "Username is required",
+        password: formData.password.trim() ? "" : "Password is required",
       });
       return;
     }
@@ -37,7 +40,7 @@ function AdminLogin() {
     try {
       const { username, password, department } = formData; // Include department in the request
 
-      const response = await axios.post('http://localhost:8800/admin-check', {
+      const response = await axios.post("http://localhost:8800/admin-check", {
         username,
         password,
         department,
@@ -47,12 +50,12 @@ function AdminLogin() {
       if (response.data.exists) {
         document.cookie = `department=${department}`;
         console.log(response);
-        navigate('/dashboard');
+        navigate("/dashboard");
       } else {
-        navigate('/admin-register');
+        navigate("/admin-register");
       }
     } catch (err) {
-      console.error('Login failed', err);
+      console.error("Login failed", err);
     }
   };
 

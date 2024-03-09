@@ -26,10 +26,10 @@ const Viewactivity = () => {
   return (
     <div>
       <h2>Activity Details for {usn}</h2>
-      {activityDetails.length > 0 ? (
+      {activityDetails && activityDetails.length > 0 ? (
         activityDetails.map((activity) => (
           <div key={activity.activity_id}>
-            <p>Activity ID: {activity.student_id}</p>
+            <p>Activity ID: {activity.activity_id}</p>
             <p>Date: {activity.date}</p>
             <p>Duration: {activity.venue}</p>
             {activity.proof && (
