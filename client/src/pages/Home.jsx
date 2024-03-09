@@ -1,8 +1,8 @@
 import React from "react";
-// import { Link } from "react-router-dom";
+ import { Link } from "react-router-dom";
 import AdminLogin from "./admin/AdminLogin";
 import StudentLogin from "./student/StudentLogin";
-// import { Button } from "../components/ui/button";
+import { Button } from "../components/ui/button";
 
 import {
   Card,
