@@ -58,41 +58,37 @@ const StudentLogin = () => {
   };
 
   return (
-    <div className="flex flex-col justify-center items-center h-screen">
-      <div className="m-10 border rounded-md p-10 hover:shadow-md transition duration-300">
-        <h3 className="text-center mb-4">Student Login</h3>
-        <form onSubmit={handleSubmit} className="text-left">
-          <label htmlFor="student-username">USN:</label>
-          <Input
-            type="text"
-            id="student-username"
-            name="usn"
-            value={formData.usn}
-            onChange={handleChange}
-            className="mb-2"
-          />
-          {formError.usn && <p style={{ color: "red" }}>{formError.usn}</p>}
 
-          <label htmlFor="student-password">Password:</label>
-          <Input
-            type="password"
-            className="mb-4"
-            id="student-password"
-            name="password"
-            value={formData.password}
-            onChange={handleChange}
-          />
-          {formError.password && (
-            <p style={{ color: "red" }}>{formError.password}</p>
-          )}
+    <form onSubmit={handleSubmit} className="bg-black p-4 rounded-md ">
+  <label htmlFor="student-username" className='text-white font-bold'>University Seat Number (USN)</label>
+  <input
+    type="text"
+    id="student-username"
+    name="usn"
+    value={formData.usn}
+    onChange={handleChange}
+    className="mt-7 mb-7 appearance-none block w-full bg-gray-900 border border-gray-700 rounded-md py-2 px-4 leading-tight text-white focus:outline-none focus:bg-gray-900 focus:border-gray-500"
+    placeholder="Enter your USN"
+  />
+  {formError.usn && <p style={{ color: 'red' }}>{formError.usn}</p>}
 
-          <Button type="submit">Login as Student</Button>
-        </form>
-      </div>
-      <Link to="/student-register" className="mt-4">
-        <Button className="">Student Register</Button>
-      </Link>
-    </div>
+  <label htmlFor="student-password" className='text-white font-bold '>Password</label>
+  <input
+    type="password"
+    id="student-password"
+    name="password"
+    value={formData.password}
+    onChange={handleChange}
+    className="mt-6 mb-7 appearance-none block w-full bg-gray-900 border border-gray-700 rounded-md py-2 px-4 leading-tight text-white focus:outline-none focus:bg-gray-900 focus:border-gray-500"
+    placeholder="Enter your password"
+  />
+  {formError.password && <p style={{ color: 'red' }}>{formError.password}</p>}
+
+  <button type="submit" className="mt-2 ml-24 mb-1 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-md ">
+    Login as Student
+  </button>
+</form>
+
   );
 };
 

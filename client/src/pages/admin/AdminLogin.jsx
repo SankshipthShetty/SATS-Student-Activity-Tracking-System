@@ -60,54 +60,49 @@ function AdminLogin() {
   };
 
   return (
-    <div className="flex flex-col justify-center items-center h-screen">
-      <div className="m-10 border rounded-md p-14 hover:shadow-md transition duration-300">
-        <h3 className="text-center mb-4">Admin Login</h3>
-        <form onSubmit={handleSubmit} className="text-left">
-          <label htmlFor="admin-username ">Username:</label>
-          <Input
-            type="text"
-            id="admin-username"
-            name="username"
-            value={formData.username}
-            onChange={handleChange}
-            className="mb-2"
-          />
-          {formError.username && (
-            <p style={{ color: "red" }}>{formError.username}</p>
-          )}
+   
+     <form onSubmit={handleSubmit} className="bg-black p-4 rounded-md ">
+      <label htmlFor="admin-username" className='text-white font-bold'>Username</label>
+      <input
+        type="text"
+        id="admin-username"
+        name="username"
+        value={formData.username}
+        onChange={handleChange}
+        className="mt-2 mb-2 appearance-none block w-full bg-gray-800 border border-gray-700 rounded-md py-2 px-4 leading-tight text-white focus:outline-none focus:bg-gray-900 focus:border-gray-500"
+        placeholder="Enter your username"
+      />
+      {formError.username && <p style={{ color: 'red' }}>{formError.username}</p>}
 
-          <label htmlFor="admin-password">Password:</label>
-          <Input
-            type="password"
-            id="admin-password"
-            name="password"
-            value={formData.password}
-            onChange={handleChange}
-            className="mb-2"
-          />
-          {formError.password && (
-            <p style={{ color: "red" }}>{formError.password}</p>
-          )}
+      <label htmlFor="admin-password"  className='text-white font-bold '>Password</label>
+      <input
+        type="password"
+        id="admin-password"
+        name="password"
+        value={formData.password}
+        onChange={handleChange}
+        className="mt-2 mb-2 appearance-none block w-full bg-gray-800 border border-gray-700 rounded-md py-2 px-4 leading-tight text-white focus:outline-none focus:bg-gray-900 focus:border-gray-500"
+        placeholder="Enter your password"
+      />
+      {formError.password && <p style={{ color: 'red' }}>{formError.password}</p>}
 
-          {/* Add a field to input department information */}
-          <label htmlFor="admin-department">Department:</label>
-          <Input
-            type="text"
-            id="admin-department"
-            name="department"
-            value={formData.department}
-            onChange={handleChange}
-            className="mb-4"
-          />
+      {/* Add a field to input department information */}
+      <label htmlFor="admin-department" className='text-white font-bold'>Department</label>
+      <input
+        type="text"
+        id="admin-department"
+        name="department"
+        value={formData.department}
+        onChange={handleChange}
+        className="mt-2 mb-2 appearance-none block w-full bg-gray-800 border border-gray-700 rounded-md py-2 px-4 leading-tight text-white focus:outline-none focus:bg-gray-900 focus:border-gray-500"
+        placeholder="Enter your department"
+      />
 
-          <Button type="submit">Login as Admin</Button>
-        </form>
-      </div>
-      <Link to="/admin-register" className="mt-4">
-        <Button className="">Admin Register</Button>
-      </Link>
-    </div>
+      <button type="submit" className="mt-2 ml-24 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-md ">
+        Login as Admin
+      </button>
+    </form>
+   
   );
 }
 
