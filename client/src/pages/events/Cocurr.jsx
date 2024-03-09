@@ -1,90 +1,107 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
 
-const StudentLogin = () => {
+const Cocurr = () => {
   const [formData, setFormData] = useState({
     usn: '',
-    password: '',
-  });
-
-  const [formError, setFormError] = useState({
-    usn: '',
-    password: '',
+    price: '',
+    venue: '',
+    date: '',
+    certificate: null, // Use null to represent the file
   });
 
   const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
-    setFormError({ ...formError, [name]: '' });
-  };
+    const { name, value, type } = e.target;
 
-  const navigate = useNavigate();
+    // Use a conditional to handle file input separately
+    const newValue = type === 'file' ? e.target.files[0] : value;
+
+    setFormData({ ...formData, [name]: newValue });
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Validate that both fields are not empty
-    if (!formData.usn.trim() || !formData.password.trim()) {
-      setFormError({
-        usn: formData.usn.trim() ? '' : 'USN is required',
-        password: formData.password.trim() ? '' : 'Password is required',
-      });
-      return;
-    }
+    // Create a FormData object to handle file upload
+    const formDataForServer = new FormData();
+    formDataForServer.append('usn', formData.usn);
+    formDataForServer.append('price', formData.price);
+    formDataForServer.append('venue', formData.venue);
+    formDataForServer.append('date', formData.date);
+    formDataForServer.append('certificate', formData.certificate); // This is where the file is appended
 
     try {
-      const { usn, password } = formData;
-
-      const response = await axios.post('http://localhost:8800/student-check', {
-        usn,
-        password,
+      // Send formDataForServer to your server using axios
+      const response = await axios.post('http://localhost:8800/cocurr', formDataForServer, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
       });
 
-      // Handle server response
-      if (response.data.exists) {
-        console.log(response);
-
-        navigate('/user-dashboard', { state: { usn } });
-
-      } else {
-        navigate('/student-register');
-      }
-    } catch (err) {
-      console.error('Login failed', err);
+      // Handle the response from the server
+      console.log(response.data);
+    } catch (error) {
+      console.error('Error submitting form:', error);
     }
   };
 
   return (
     <div>
-      <div>
-        <h3>Student Login</h3>
-        <form onSubmit={handleSubmit}>
-          <label htmlFor="student-username">USN</label>
+      <h2>Cocurr Form</h2>
+      <form onSubmit={handleSubmit}>
+        <div>
+          <label htmlFor="usn">USN:</label>
           <input
             type="text"
-            id="student-username"
-            name="usn" // Change from "username" to "usn"
+            id="usn"
+            name="usn"
             value={formData.usn}
             onChange={handleChange}
           />
-          {formError.usn && <p style={{ color: 'red' }}>{formError.usn}</p>}
-
-          <label htmlFor="student-password">Password:</label>
+        </div>
+        <div>
+          <label htmlFor="price">Price:</label>
           <input
-            type="password"
-            id="student-password"
-            name="password"
-            value={formData.password}
+            type="text"
+            id="price"
+            name="price"
+            value={formData.price}
             onChange={handleChange}
           />
-          {formError.password && <p style={{ color: 'red' }}>{formError.password}</p>}
-
-          <button type="submit">Login as Student</button>
-        </form>
-      </div>
+        </div>
+        <div>
+          <label htmlFor="venue">Venue:</label>
+          <input
+            type="text"
+            id="venue"
+            name="venue"
+            value={formData.venue}
+            onChange={handleChange}
+          />
+        </div>
+        <div>
+          <label htmlFor="date">Date:</label>
+          <input
+            type="text"
+            id="date"
+            name="date"
+            value={formData.date}
+            onChange={handleChange}
+          />
+        </div>
+        <div>
+          <label htmlFor="certificate">Certificate:</label>
+          <input
+            type="file"
+            id="certificate"
+            name="certificate"
+            onChange={handleChange}
+          />
+        </div>
+        <button type="submit">Submit</button>
+      </form>
     </div>
   );
 };
 
-export default StudentLogin;
+export default Cocurr;
