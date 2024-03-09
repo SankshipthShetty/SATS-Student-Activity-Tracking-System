@@ -1,7 +1,28 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
- 
+
+.gradient-text {
+  background: linear-gradient(
+    to right ,
+    #a855f7,
+    #ec4899,
+    #eab308,
+    #ec4899,
+    #a855f7,
+    #ec4899,
+    #eab308
+  );
+  background-clip: text;
+  background-size: 300% 300%;
+}
+
+.simpletext{
+  color:'white';
+}
+
+/* 
+
 @layer base {
   :root {
     --background: 0 0% 100%;
@@ -64,13 +85,16 @@
     --input: 215 27.9% 16.9%;
     --ring: 216 12.2% 83.9%;
   }
+
+ 
 }
  
 @layer base {
   * {
-    @apply border-border;
+    @apply border;
   }
-  body {
+ .body {
     @apply bg-background text-foreground;
   }
-}
+  
+}  */

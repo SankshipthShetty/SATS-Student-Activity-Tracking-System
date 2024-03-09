@@ -1,4 +1,5 @@
 /** @type {import('tailwindcss').Config} */
+
 module.exports = {
   darkMode: ["class"],
   content: [
@@ -17,6 +18,11 @@ module.exports = {
       },
     },
     extend: {
+      keyframes: {
+        gradient:{
+          "0%": { backgroundPosition: "0% 50%" },
+          "50%": { backgroundPosition: "100% 50%" },
+        },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
@@ -72,6 +78,10 @@ module.exports = {
         "accordion-up": "accordion-up 0.2s ease-out",
       },
     },
+    animation:{
+      gradient:"gradient 6s linear infinite",
+    },
   },
   plugins: [require("tailwindcss-animate")],
+}
 }
