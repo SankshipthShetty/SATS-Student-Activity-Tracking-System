@@ -2,6 +2,15 @@ import React, { useEffect, useState } from 'react';
 
 import { Link, useLocation } from 'react-router-dom';
 import axios from 'axios';
+import {
+  Card,
+  CardContent,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "../../components/ui/card";
+
+
 
 const UserHome = () => {
   const [userData, setUserData] = useState({});
@@ -27,20 +36,36 @@ const UserHome = () => {
 
   
   return (
-    <div>
-      <h1>User Home</h1>
-      <h3>Student {usnFromState}</h3>
-      <p>Branch: {userData.branch}</p>
-      <div>
-      <Link to="/cocurrecular">
-        cocurrecular
-      </Link>
-      </div>
-      
-      <Link to="/activity">
-        activity
-      </Link>
-    </div>
+    <div style={{ overflow: 'hidden' }} className="min-h-screen bg-black flex flex-col top-20 justify-start items-center py-16">
+  <h1 className="gradient-text text-transparent text-5xl font-bold text-center animate-gradient mt-0 mb-8">Welcome back! {userData.fname}</h1>
+  <div className="flex flex-col items-center text-white font-bold">
+    <p className="text-white font-bold text-xl mb-2">USN: {usnFromState}</p>
+    <p className="mb-8 text-white font-bold text-xl">Branch: {userData.branch}</p>
+  </div>
+  <div className="mt-40 flex gap-20">
+  <Link to="/cocurricular" >
+    <Card className="w-96 h-96 transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-105 ">
+      <CardHeader>
+        <CardContent className="mt-36 text-white text-center font-bold text-lg flex justify-center items-center h-full   ">Co-curricular activities</CardContent>
+      </CardHeader>
+      <CardFooter className="flex justify-center items-center mt-4">
+       
+      </CardFooter>
+    </Card>
+   </Link>
+   <Link to="/activity" >
+    <Card className="w-96 h-96 transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-105">
+      <CardHeader>
+        <CardTitle className="mt-36 text-white text-center font-bold text-lg flex justify-center items-center h-full ">Activities</CardTitle>
+      </CardHeader>
+      <CardFooter className="flex justify-center items-center mt-4">
+      </CardFooter>
+    </Card>
+    </Link>
+  </div>
+</div>
+
+
   );
 };
 

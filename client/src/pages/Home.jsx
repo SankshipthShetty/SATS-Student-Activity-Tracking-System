@@ -17,7 +17,7 @@ function Home() {
     <div style={{ overflow: 'hidden' }} className="min-h-screen bg-black flex flex-col top-20 justify-center items-center py-16" >
       <p className="gradient-text text-transparent text-5xl font-bold text-center animate-gradient mt-0 mb-32 ">STUDENT ACTIVITY MANAGEMENT SYSTEM</p>
       
-      <div className="mt-8 flex gap-40 ">
+      <div className="mt-8 flex gap-40">
         <Card className="w-96 h-98">
           <CardHeader>
             <CardTitle className="text-white text-center font-bold text-lg">ADMIN LOGIN</CardTitle>
