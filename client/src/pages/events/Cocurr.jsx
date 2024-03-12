@@ -51,76 +51,77 @@ const Cocurr = () => {
 
   return (
     <div style={{ overflow: 'hidden' }} className="min-h-screen bg-black flex flex-col top-20 justify-center items-center py-16">
-    <p className="gradient-text text-transparent text-5xl font-bold text-center animate-gradient mt-0 mb-22">CO-CURRICULAR FORM</p>
+      <p className="gradient-text text-transparent text-5xl font-bold text-center animate-gradient mt-0 mb-22">CO-CURRICULAR FORM</p>
 
-    <div className="mt-20 flex gap-40">
-      <Card className="w-120 h-100 pl-10 pr-10 pb-10 pt-1">
-        <CardHeader>
-          {/* <CardTitle className="text-white text-center font-bold text-lg mb-4">CoCurr Form</CardTitle> */}
-        </CardHeader>
+      <div className="mt-14 flex gap-40">
+        <Card className="w-120 h-100 pl-10 pr-10 pb-10 pt-1">
+          <CardHeader>
+            {/* <CardTitle className="text-white text-center font-bold text-lg mb-4">CoCurr Form</CardTitle> */}
+          </CardHeader>
 
-        <form onSubmit={handleSubmit} className="text-white">
-          <div className="mb-4">
-            <label htmlFor="usn" className="text-white font-bold">USN:</label>
-            <input
-              type="text"
-              id="usn"
-              name="usn"
-              value={formData.usn}
-              onChange={handleChange}
-              className="mt-1 p-2 bg-gray-700 border border-gray-600 rounded-md w-full"
-            />
-          </div>
-          <div className="mb-4">
-            <label htmlFor="price" className="text-white font-bold">Price:</label>
-            <input
-              type="text"
-              id="price"
-              name="price"
-              value={formData.price}
-              onChange={handleChange}
-              className="mt-1 p-2 bg-gray-700 border border-gray-600 rounded-md w-full"
-            />
-          </div>
-          <div className="mb-4">
-            <label htmlFor="venue" className="text-white font-bold">Venue:</label>
-            <input
-              type="text"
-              id="venue"
-              name="venue"
-              value={formData.venue}
-              onChange={handleChange}
-              className="mt-1 p-2 bg-gray-700 border border-gray-600 rounded-md w-full"
-            />
-          </div>
-          <div className="mb-4">
-            <label htmlFor="date" className="text-white font-bold">Date:</label>
-            <input
-              type="text"
-              id="date"
-              name="date"
-              value={formData.date}
-              onChange={handleChange}
-              className="mt-1 p-2 bg-gray-700 border border-gray-600 rounded-md w-full"
-            />
-          </div>
-          <div className="mb-4">
-            <label htmlFor="certificate" className="text-white font-bold">Certificate:</label>
-            <input
-              type="file"
-              id="certificate"
-              name="certificate"
-              onChange={handleChange}
-              className="mt-1 p-2 bg-gray-700 border border-gray-600 rounded-md w-full"
-            />
-          </div>
-          <button type="submit" className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-md w-full">
-            Submit
-          </button>
-        </form>
-      </Card>
+          <form onSubmit={handleSubmit} className="text-white">
+            <div className="mb-4">
+              <label htmlFor="usn" className="text-white font-bold">USN:</label>
+              <input
+                type="text"
+                id="usn"
+                name="usn"
+                value={formData.usn}
+                onChange={handleChange}
+                className="mt-1 p-2 bg-gray-700 border border-gray-600 rounded-md w-full"
+              />
+            </div>
+            <div className="mb-4">
+              <label htmlFor="price" className="text-white font-bold">Price:</label>
+              <input
+                type="text"
+                id="price"
+                name="price"
+                value={formData.price}
+                onChange={handleChange}
+                className="mt-1 p-2 bg-gray-700 border border-gray-600 rounded-md w-full"
+              />
+            </div>
+            <div className="mb-4">
+              <label htmlFor="venue" className="text-white font-bold">Venue:</label>
+              <input
+                type="text"
+                id="venue"
+                name="venue"
+                value={formData.venue}
+                onChange={handleChange}
+                className="mt-1 p-2 bg-gray-700 border border-gray-600 rounded-md w-full"
+              />
+            </div>
+            <div className="mb-4">
+              <label htmlFor="date" className="text-white font-bold">Date:</label>
+              <input
+                type="text"
+                id="date"
+                name="date"
+                value={formData.date}
+                onChange={handleChange}
+                className="mt-1 p-2 bg-gray-700 border border-gray-600 rounded-md w-full"
+              />
+            </div>
+            <div className="mb-4">
+              <label htmlFor="certificate" className="text-white font-bold">Certificate:</label>
+              <input
+                type="file"
+                id="certificate"
+                name="certificate"
+                onChange={handleChange}
+                className="mt-1 p-2 bg-gray-700 border border-gray-600 rounded-md w-full"
+              />
+            </div>
+            <button type="submit" className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-md w-full">
+              Submit
+            </button>
+          </form>
+
+        </Card>
+      </div>
     </div>
-  </div>
   );
 };
 
