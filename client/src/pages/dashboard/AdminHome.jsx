@@ -26,26 +26,43 @@ const AdminHome = () => {
 
   return (
     <div className="mb-6">
-    <p className="mb-4">Department: {document.cookie.split('; ').find(row => row.startsWith('department=')).split('=')[1]}</p>
-  
-    {/* Display users */}
-    <ul className="list-none p-0">
-      {users.map((user, index) => (
-        <div key={user.usn} className={`flex items-center justify-between mb-2${index < users.length - 1 ? ' pb-2 border-b' : ''}`}>
-          <div className="mr-4">{user.usn} {user.fname}</div>
-          <div className="flex space-x-4">
-            <Link to={`/view-activity/${user.usn}`}>
-              <Button>activity</Button>
-            </Link>
-            <Link to={`/view-cocurr/${user.usn}`}>
-              <Button>co-curr</Button>
-            </Link>
+      <p className="mb-4 p-4 text-xl">
+        Department:{" "}
+        {
+          document.cookie
+            .split("; ")
+            .find((row) => row.startsWith("department="))
+            .split("=")[1]
+        }
+      </p>
+
+      {/* Display users */}
+      <ul className="list-none p-6">
+        {" "}
+        {/* Add padding here */}
+        {users.map((user, index) => (
+          <div
+            key={user.usn}
+            className={`flex items-center justify-between mb-2${
+              index < users.length - 1 ? " pb-2 border-b" : ""
+            }`}
+          >
+            <div className="mr-4">
+              
+            {user.fname} - {user.usn} 
+            </div>
+            <div className="flex space-x-4">
+              <Link to={`/view-activity/${user.usn}`}>
+                <Button>activity</Button>
+              </Link>
+              <Link to={`/view-cocurr/${user.usn}`}>
+                <Button>co-curr</Button>
+              </Link>
+            </div>
           </div>
-        </div>
-      ))}
-    </ul>
-  </div>
-  
+        ))}
+      </ul>
+    </div>
   );
 };
 
