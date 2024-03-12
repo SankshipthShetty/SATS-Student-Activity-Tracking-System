@@ -21,6 +21,10 @@
   color:'white';
 }
 
+.card:hover .card-header {
+  background-color: #4a5568; /* Change the color to your desired hover effect */
+}
+
 /* 
 
 @layer base {
