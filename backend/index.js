@@ -130,7 +130,7 @@ app.post("/student-check", (req, res) => {
 app.get("/get-user/:usn", (req, res) => {
   const { usn } = req.params;
 
-  const query = "SELECT usn, branch FROM student WHERE usn = ?";
+  const query = "SELECT usn, branch,fname,lname FROM student WHERE usn = ?";
   db.query(query, [usn], (err, results) => {
     if (err) {
       console.error("Database error:", err);

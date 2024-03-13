@@ -37,7 +37,7 @@ const UserHome = () => {
   
   return (
     <div style={{ overflow: 'hidden' }} className="min-h-screen bg-black flex flex-col top-20 justify-start items-center py-16">
-  <h1 className="gradient-text text-transparent text-5xl font-bold text-center animate-gradient mt-0 mb-8">Welcome back! {userData.fname}</h1>
+  <h1 className="gradient-text text-transparent text-5xl font-bold text-center animate-gradient mt-0 mb-8">Welcome back! {userData.fname} {userData.lname}</h1>
   <div className="flex flex-col items-center text-white font-bold">
     <p className="text-white font-bold text-xl mb-2">USN: {usnFromState}</p>
     <p className="mb-8 text-white font-bold text-xl">Branch: {userData.branch}</p>

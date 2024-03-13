@@ -32,6 +32,7 @@ const Viewactivity = () => {
             <p>Activity ID: {activity.activity_id}</p>
             <p>Date: {activity.date}</p>
             <p>Duration: {activity.venue}</p>
+            <p>points:{activity.points}</p>
             {activity.proof && (
               <img
                 src={`/images/activity/${activity.proof}`}
