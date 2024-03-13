@@ -1,11 +1,20 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { useNavigate} from "react-router-dom";
 import {
   Card,
   CardHeader,
 } from "../../components/ui/card";
 
+import { Button } from "../../components/ui/button";
+
 const Activity = () => {
+
+  const navigate = useNavigate();
+const handleBack=()=>{
+  navigate("/user-dashboard")
+}
+
   const [formData, setFormData] = useState({
     usn: '',
     venue: '',
@@ -52,7 +61,11 @@ const Activity = () => {
 
   return (
     <div style={{ overflow: 'hidden' }} className="min-h-screen bg-black flex flex-col top-20 justify-center items-center py-16">
-    <p className="gradient-text text-transparent text-5xl font-bold text-center animate-gradient mt-0 mb-22">ACHIEVEMENT FORM</p>
+     <Button onClick={handleBack} variant="secondary" className="absolute text-white font-bold border-white border-2 top-10 left-10 p-6  ">
+       Back
+      </Button>
+    <p className="gradient-text text-transparent text-5xl font-bold text-center animate-gradient mt-0 mb-22">ACHIEVEMENT FORM </p>
+    
   
     <div className="mt-8 flex gap-40">
   <Card className="w-120 h-100 pl-10 pr-10 pb-10 pt-1">
@@ -121,8 +134,13 @@ const Activity = () => {
       </form>
     
   </Card>
-</div>
+  
   </div>
+
+  
+</div>
+ 
+  
   );
 };
 

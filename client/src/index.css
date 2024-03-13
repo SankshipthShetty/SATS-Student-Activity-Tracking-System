@@ -5,13 +5,13 @@
 .gradient-text {
   background: linear-gradient(
     to right ,
-    #a855f7,
-    #ec4899,
-    #eab308,
-    #ec4899,
-    #a855f7,
-    #ec4899,
-    #eab308
+    #ffffff,
+    #87b7d4,
+    #163bef,
+    #87b7d4,
+    #ffffff,
+    #87b7d4,
+    #163bef
   );
   background-clip: text;
   background-size: 300% 300%;
@@ -23,6 +23,22 @@
 
 .card:hover .card-header {
   background-color: #4a5568; /* Change the color to your desired hover effect */
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.animate-float {
+  animation: float 3s infinite ease-in-out;
 }
 
 /* 
