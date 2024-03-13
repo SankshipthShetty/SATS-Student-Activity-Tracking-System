@@ -1,5 +1,5 @@
 import express from "express";
-import mysql from "mysql";
+import mysql from "mysql2";
 import cors from "cors";
 import multer from "multer";
 const app = express();
@@ -11,9 +11,20 @@ const db = mysql.createConnection({
   host: "localhost",
   user: "root",
   password: "password",
-  database: "student_activity_management_system",
+  database: "student_activity_management_system"
+});
+db.connect((err) => {
+  if (err) {
+    console.error('Error connecting to MySQL database:', err);
+    return;
+  }
+  console.log('Connected to MySQL database!');
 });
 
+// Optionally, you can also listen for the 'error' event to handle connection errors
+db.on('error', (err) => {
+  console.error('MySQL database error:', err);
+});
 const activityStorage = multer.diskStorage({
   destination: function (req, file, cb) {
     cb(null, "../client/public/images/activity");
