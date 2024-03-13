@@ -88,7 +88,7 @@ const handleBack=()=>{
               />
             </div>
             <div className="mb-4">
-              <label htmlFor="price" className="text-white font-bold">Price:</label>
+              <label htmlFor="price" className="text-white font-bold">Prize:</label>
               <input
                 type="text"
                 id="price"

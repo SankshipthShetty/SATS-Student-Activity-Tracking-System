@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation,useNavigate } from 'react-router-dom';
+
 import axios from 'axios';
 import {
   Card,
@@ -10,9 +11,16 @@ import {
   CardTitle,
 } from "../../components/ui/card";
 
-
+import { Button } from "../../components/ui/button";
 
 const UserHome = () => {
+
+  const navigate = useNavigate();
+  const handleBack=()=>{
+    navigate("/")
+  }
+
+  
   const [userData, setUserData] = useState({});
   const location = useLocation(); // useLocation hook to access state from navigate
 
@@ -37,10 +45,13 @@ const UserHome = () => {
   
   return (
     <div style={{ overflow: 'hidden' }} className="min-h-screen bg-black flex flex-col top-20 justify-start items-center py-16">
-  <h1 className="gradient-text text-transparent text-5xl font-bold text-center animate-gradient mt-0 mb-8">Welcome back! {userData.fname} {userData.lname}</h1>
+  <Button onClick={handleBack} variant="secondary" className="absolute text-white font-bold border-white border-2 top-10 left-10 p-6  ">
+       Log Out
+      </Button>
+ <h1 className="gradient-text text-transparent text-5xl font-bold text-center animate-gradient mt-0 mb-8 p-2">Welcome back! {userData.fname}</h1>
   <div className="flex flex-col items-center text-white font-bold">
     <p className="text-white font-bold text-xl mb-2">USN: {usnFromState}</p>
-    <p className="mb-8 text-white font-bold text-xl">Branch: {userData.branch}</p>
+    <p className="text-white font-bold text-xl">Branch: {userData.branch}</p>
   </div>
   <div className="mt-40 flex gap-20">
   <Link to="/cocurrecular" >
