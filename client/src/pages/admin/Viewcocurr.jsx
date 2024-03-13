@@ -1,12 +1,19 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { useParams } from 'react-router-dom';
+import { useParams,useNavigate } from 'react-router-dom';
+import { Button } from "../../components/ui/button";
 
 const ViewCocurr = () => {
   const [cocurrDetails, setCocurrDetails] = useState([]);
   const [modalVisible, setModalVisible] = useState(false);
   const [selectedImage, setSelectedImage] = useState('');
   const { usn } = useParams(); // Retrieve usn parameter from the route
+
+   
+  const navigate = useNavigate();
+const handleBack=()=>{
+  navigate("/dashboard")
+}
 
   useEffect(() => {
     // Fetch co-curricular details for the specific usn from the server
@@ -38,19 +45,22 @@ const ViewCocurr = () => {
 
 return (
     <div style={{ overflow: 'hidden' }} className="min-h-screen bg-black flex flex-col top-20 justify-center items-center py-16">
+      <Button onClick={handleBack} variant="secondary" className="absolute text-white font-bold border-white border-2 top-10 left-10 p-6  ">
+       Back
+      </Button>
       <p className=" absolute gradient-text text-transparent text-5xl font-bold text-center animate-gradient top-20 ">CO-CURRICULAR DETAILS</p>
-      <h2 className="absolute text-white font-bold text-3xl top-40 mb-4">USN: {usn}</h2>
+      <h2 className="absolute text-white font-bold text-3xl top-40 ">USN: {usn}</h2>
       {cocurrDetails && cocurrDetails.length > 0 ? (
         cocurrDetails.map((cocurr) => (
-          <div className="w-full flex justify-center mb-8" key={cocurr.cocurr_id}>
+          <div className="w-full flex justify-center mb-4" key={cocurr.cocurr_id}>
             <div className="rounded-lg p-4 flex w-5/6 border-2 border-white">
               <div className="w-3/4">
                 <p className="text-white font-bold">Date: {cocurr.date}</p>
                 <p className="text-white font-bold">Venue: {cocurr.venue}</p>
-                <p className="text-white font-bold">Price: {cocurr.price}</p>
+                <p className="text-white font-bold">Prize: {cocurr.price}</p>
               </div>
               <div className="w-1/4 flex justify-center items-center text-white font-bold">
-                <p className="text-white font-bold mr-5">Certificate:</p>
+                <p className="text-white font-bold mr-5 mb-28">Certificate:</p>
                 {cocurr.certificate && (
                   <div className="cursor-pointer" onClick={() => handleImageClick(`/images/cocurr/${cocurr.certificate}`)}>
                     <img

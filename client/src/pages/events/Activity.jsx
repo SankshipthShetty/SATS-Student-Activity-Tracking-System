@@ -24,8 +24,6 @@ const handleBack=()=>{
     points: '',
   });
 
- 
-
   const handleChange = (e) => {
     const { name, value, type } = e.target;
 
@@ -45,7 +43,7 @@ const handleBack=()=>{
     formDataForServer.append('proof', formData.proof);             // This is where the file is appended
     formDataForServer.append('document', formData.document);
     formDataForServer.append('date', formData.date);
-    formDataForServer.append('points', formData.points);
+    // formDataForServer.append('points', formData.points);
 
     try {
       // Send formDataForServer to your server using axios
@@ -110,12 +108,12 @@ const handleBack=()=>{
           />
         </div>
         <div className="mb-4">
-          <label htmlFor="doc" className="text-white font-bold">Doc:</label>
+          <label htmlFor="document" className="text-white font-bold">Doc:</label>
           <input
             type="text"
-            id="doc"
-            name="doc"
-            value={formData.doc}
+            id="document"
+            name="document"
+            value={formData.document}
             onChange={handleChange}
             className="mt-1 p-2 bg-gray-700 border border-gray-600 rounded-md w-full"
           />
@@ -131,17 +129,7 @@ const handleBack=()=>{
             className="mt-1 p-2 bg-gray-700 border border-gray-600 rounded-md w-full"
           />
         </div>
-        <div className="mb-4">
-          <label htmlFor="points" className="text-white font-bold ">Points:</label>
-          <input
-            type="number"
-            id="points"
-            name="points"
-            value={formData.points}
-            onChange={handleChange}
-            className="mt-1 p-2 bg-gray-700 border border-gray-600 rounded-md w-full"
-          />
-        </div>
+        
         <button type="submit" className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-md w-full">
           Submit
         </button>
