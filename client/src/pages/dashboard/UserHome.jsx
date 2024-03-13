@@ -43,7 +43,7 @@ const UserHome = () => {
     <p className="mb-8 text-white font-bold text-xl">Branch: {userData.branch}</p>
   </div>
   <div className="mt-40 flex gap-20">
-  <Link to="/cocurricular" >
+  <Link to="/cocurrecular" >
     <Card className="w-96 h-96 transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-105 ">
       <CardHeader>
         <CardContent className="mt-36 text-white text-center font-bold text-lg flex justify-center items-center h-full   ">Co-curricular activities</CardContent>

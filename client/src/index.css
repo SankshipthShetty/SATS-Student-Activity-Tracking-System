@@ -25,6 +25,22 @@
   background-color: #4a5568; /* Change the color to your desired hover effect */
 }
 
+@keyframes float {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.animate-float {
+  animation: float 3s infinite ease-in-out;
+}
+
 /* 
 
 @layer base {
