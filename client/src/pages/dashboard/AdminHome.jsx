@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { Link ,useNavigate} from "react-router-dom";
 import { Button } from "../../components/ui/button";
 import {
   Card,
@@ -10,6 +10,10 @@ import {
 const AdminHome = () => {
   const [users, setUsers] = useState([]);
 
+  const navigate = useNavigate();
+  const handlellogout = () => {
+    navigate("/")
+  }
   useEffect(() => {
     // Retrieve department from cookie
     const department = document.cookie
@@ -30,7 +34,7 @@ const AdminHome = () => {
 
   return (
     <div style={{ overflow: 'hidden' }} className="min-h-screen bg-black flex flex-col top-20 justify-start items-center py-16">
-    <Button variant="secondary" className="absolute text-white font-bold border-white border-2 top-10 left-10 p-6  ">
+    <Button variant="secondary" className="absolute text-white font-bold border-white border-2 top-10 left-10 p-6 " onClick={handlellogout} >
        Log Out
       </Button>
  <h1 className="gradient-text text-transparent text-5xl font-bold text-center animate-gradient mt-0 mb-8">Welcome back! </h1>

@@ -20,7 +20,6 @@ const UserHome = () => {
     navigate("/")
   }
 
-  
   const [userData, setUserData] = useState({});
   const location = useLocation(); // useLocation hook to access state from navigate
 
@@ -52,6 +51,7 @@ const UserHome = () => {
   <div className="flex flex-col items-center text-white font-bold">
     <p className="text-white font-bold text-xl mb-2">USN: {usnFromState}</p>
     <p className="text-white font-bold text-xl">Branch: {userData.branch}</p>
+
   </div>
   <div className="mt-40 flex gap-20">
   <Link to="/cocurrecular" >

@@ -9,7 +9,7 @@ import {
 import { Button } from "../../components/ui/button";
 
 const Activity = () => {
-
+  
   const navigate = useNavigate();
 const handleBack=()=>{
   navigate("/user-dashboard")
@@ -24,6 +24,8 @@ const handleBack=()=>{
     points: '',
   });
 
+ 
+
   const handleChange = (e) => {
     const { name, value, type } = e.target;
 
@@ -35,12 +37,13 @@ const handleBack=()=>{
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+   
     // Create a FormData object to handle file upload
     const formDataForServer = new FormData();
     formDataForServer.append('usn', formData.usn);
     formDataForServer.append('venue', formData.venue);
-    formDataForServer.append('proof', formData.proof); // This is where the file is appended
+    formDataForServer.append('proof', formData.proof);             // This is where the file is appended
+    formDataForServer.append('document', formData.document);
     formDataForServer.append('date', formData.date);
     formDataForServer.append('points', formData.points);
 
@@ -64,7 +67,7 @@ const handleBack=()=>{
      <Button onClick={handleBack} variant="secondary" className="absolute text-white font-bold border-white border-2 top-10 left-10 p-6  ">
        Back
       </Button>
-    <p className="gradient-text text-transparent text-5xl font-bold text-center animate-gradient mt-0 mb-22">ACHIEVEMENT FORM </p>
+    <p className="gradient-text text-transparent text-5xl font-bold text-center animate-gradient mt-0 mb-22">ACHIEVEMENT FORM</p>
     
   
     <div className="mt-8 flex gap-40">
@@ -112,6 +115,7 @@ const handleBack=()=>{
             type="text"
             id="doc"
             name="doc"
+            value={formData.doc}
             onChange={handleChange}
             className="mt-1 p-2 bg-gray-700 border border-gray-600 rounded-md w-full"
           />
@@ -142,15 +146,10 @@ const handleBack=()=>{
           Submit
         </button>
       </form>
-    
   </Card>
-  
-  </div>
-
-  
+  </div>  
 </div>
- 
-  
+
   );
 };
 
