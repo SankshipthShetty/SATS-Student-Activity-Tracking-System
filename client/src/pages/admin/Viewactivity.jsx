@@ -103,7 +103,7 @@ const Viewactivity = () => {
               {/* <p className="text-white font-bold">Activity ID: {activity.activity_id}</p> */}
               <p className="text-white font-bold">Date: {activity.date}</p>
               <p className="text-white font-bold">Venue: {activity.venue}</p>
-              <p className="text-white font-bold mb-10">Description: {activity.doc}</p>
+              <p className="text-white font-bold mb-10">Description: {activity.document}</p>
               {/* <p className="text-white font-bold">Points: {activity.points}</p> */}
               <form onSubmit={(event) => handleSubmit(event, index)}>
               <label htmlFor={`points-${index}`} className="text-white font-bold">Points: </label>

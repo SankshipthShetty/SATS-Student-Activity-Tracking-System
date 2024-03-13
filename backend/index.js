@@ -1,5 +1,5 @@
 import express from "express";
-import mysql from "mysql2";
+import mysql from "mysql";
 import cors from "cors";
 import multer from "multer";
 const app = express();
