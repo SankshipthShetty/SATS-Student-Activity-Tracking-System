@@ -55,6 +55,26 @@ app.post("/activity", activityUpload.single("proof"), (req, res) => {
     formData.usn,
   ];
 
+  app.post("/update-activity", (req, res) => {
+    const { date, points } = req.body;
+
+    if (!date || !points) {
+      return res.status(400).json({ message: "Date and points are required" });
+    }
+
+    const sql = `UPDATE achivement SET points = ? WHERE date = ?`;
+
+    db.query(sql, [points, date], (err, result) => {
+      if (err) {
+        console.error("Error updating points:", err);
+        return res.status(500).json({ message: "Internal server error" });
+      }
+
+      console.log("Points updated successfully");
+      return res.status(200).json({ message: "Points updated successfully" });
+    });
+  });
+
   db.query(sql, values, (error, results) => {
     if (error) {
       console.error("Error inserting data into MySQL:", error);
@@ -144,6 +164,23 @@ app.get("/get-user/:usn", (req, res) => {
         res.status(404).json({ error: "User not found" });
       }
     }
+  });
+});
+
+app.get("/get-total-points/:usn", (req, res) => {
+  const { usn } = req.params;
+
+  // Query to calculate total points for the user with the given USN
+  const sql = `SELECT SUM(points) AS totalPoints FROM achivement WHERE student_id = ?`;
+
+  db.query(sql, [usn], (err, result) => {
+    if (err) {
+      console.error("Error fetching total points:", err);
+      return res.status(500).json({ message: "Internal server error" });
+    }
+
+    const totalPoints = result[0].totalPoints || 0; // Retrieve total points from the query result
+    res.status(200).json({ totalPoints });
   });
 });
 
