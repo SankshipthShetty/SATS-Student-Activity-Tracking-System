@@ -65,7 +65,7 @@ const handleBack=()=>{
      <Button onClick={handleBack} variant="secondary" className="absolute text-white font-bold border-white border-2 top-10 left-10 p-6  ">
        Back
       </Button>
-    <p className="gradient-text text-transparent text-5xl font-bold text-center animate-gradient mt-0 mb-22">ACHIEVEMENT FORM</p>
+    <p className="gradient-text text-transparent text-5xl font-bold text-center animate-gradient mt-0 mb-22">ACTIVITY FORM</p>
     
   
     <div className="mt-8 flex gap-40">
@@ -108,7 +108,7 @@ const handleBack=()=>{
           />
         </div>
         <div className="mb-4">
-          <label htmlFor="document" className="text-white font-bold">Doc:</label>
+          <label htmlFor="document" className="text-white font-bold">Description:</label>
           <input
             type="text"
             id="document"

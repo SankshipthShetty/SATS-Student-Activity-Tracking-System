@@ -67,7 +67,7 @@ const UserHome = () => {
   <Link to="/cocurrecular" >
     <Card className="w-96 h-96 transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-105 ">
       <CardHeader>
-        <CardContent className="mt-36 text-white text-center font-bold text-lg flex justify-center items-center h-full   ">Co-curricular activities</CardContent>
+        <CardContent className="mt-36 text-white text-center font-bold text-lg flex justify-center items-center h-full   ">Co-curricular Activities</CardContent>
       </CardHeader>
       <CardFooter className="flex justify-center items-center mt-4">
        
@@ -77,7 +77,7 @@ const UserHome = () => {
    <Link to="/activity" >
     <Card className="w-96 h-96 transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-105">
       <CardHeader>
-        <CardTitle className="mt-36 text-white text-center font-bold text-lg flex justify-center items-center h-full ">Activities</CardTitle>
+        <CardTitle className="mt-36 text-white text-center font-bold text-lg flex justify-center items-center h-full ">Activity Form</CardTitle>
       </CardHeader>
       <CardFooter className="flex justify-center items-center mt-4">
       </CardFooter>

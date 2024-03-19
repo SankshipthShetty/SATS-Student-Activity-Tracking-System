@@ -1,11 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useParams ,useNavigate} from "react-router-dom";
-import {
-  Card,
-  CardHeader,
-} from "../../components/ui/card";
-
 import { Button } from "../../components/ui/button";
 
 const Viewactivity = () => {
@@ -14,6 +9,7 @@ const Viewactivity = () => {
   const handleBack=()=>{
     navigate("/dashboard")
   }
+  
   const [modalVisible, setModalVisible] = useState(false);
   const [selectedImage, setSelectedImage] = useState(null);
 
@@ -42,6 +38,7 @@ const Viewactivity = () => {
     // Clean up by removing the anchor element
     document.body.removeChild(downloadLink);
   }
+
   useEffect(() => {
     // Fetch all activity details for the specific usn from the server
     axios
@@ -80,7 +77,8 @@ const Viewactivity = () => {
           i === index ? updatedActivity : item
         )
       );
-    })
+    console.log("Activity updated successfully:", response.data);}
+    )
     .catch((error) => {
       console.error("Error updating activity:", error);
     });
@@ -94,7 +92,7 @@ const Viewactivity = () => {
       </Button>
     <p className=" absolute gradient-text text-transparent text-5xl font-bold text-center animate-gradient top-20 ">ACTIVITY DETAILS</p>
     <h2 className="absolute text-white font-bold text-3xl top-36 ">USN: {usn}</h2>
-    {/* <h2 className="absolute text-white font-bold text-3xl top-48 ">Total Points: /100</h2> */}
+    <h2 className=" text-white font-bold text-3xl top-48 mb-28"></h2>
     {activityDetails && activityDetails.length > 0 ? (
       activityDetails.map((activity,index) => (
         <div className="w-full flex justify-center mb-4">

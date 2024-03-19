@@ -42,7 +42,18 @@ const ViewCocurr = () => {
   };
 
   const handleDownload = () => {
-    // Handle download functionality here
+    const downloadLink = document.createElement('a');
+    // Set the href attribute to the URL of the selected image
+    downloadLink.href = selectedImage;
+    // Set the download attribute to specify the filename
+    downloadLink.download = 'image.jpg'; // You can change 'image.jpg' to whatever filename you want
+    
+    // Simulate a click on the anchor element to trigger the download
+    document.body.appendChild(downloadLink);
+    downloadLink.click();
+    
+    // Clean up by removing the anchor element
+    document.body.removeChild(downloadLink);
   };
 
   return (
