@@ -1,2 +1,2 @@
-# Student-Activity-Management-System
+# Student-Activity-Tracking-System
 A DBMS project on Student activity tracking.
